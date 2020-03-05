@@ -28,7 +28,7 @@
 /*
  * FastSatFinder *.ini format for DVB-S, DVB-S2
  */
-static const char *channel_parse_modulation[] = {
+static const char *fsf_parse_modulation[] = {
 	[APSK_16] =  "16APSK",
 	[APSK_32] =  "32APSK",
 	[DQPSK] =    "DQPSK",
@@ -39,7 +39,7 @@ static const char *channel_parse_modulation[] = {
 	[VSB_16] =   "16VSB",
 };
 
-static const char *channel_parse_code_rate[12] = {
+static const char *fsf_parse_code_rate[12] = {
 	[FEC_1_2] =  "12",
 	[FEC_2_3] =  "23",
 	[FEC_3_4] =  "34",
@@ -54,7 +54,7 @@ static const char *channel_parse_code_rate[12] = {
 	[FEC_NONE] = "NONE",
 };
 
-static const char *channel_parse_polarization[] = {
+static const char *fsf_parse_polarization[] = {
 	[POLARIZATION_OFF] = "-",
 	[POLARIZATION_H] = "H",
 	[POLARIZATION_V] = "V",
@@ -62,7 +62,7 @@ static const char *channel_parse_polarization[] = {
 	[POLARIZATION_R] = "R",
 };
 
-static const char *channel_parse_rolloff[] = {
+static const char *fsf_parse_rolloff[] = {
 	[ROLLOFF_20] = "20",
 	[ROLLOFF_25] = "25",
 	[ROLLOFF_35] = "35",
@@ -71,31 +71,31 @@ static const char *channel_parse_rolloff[] = {
 
 static const struct dvb_parse_table sys_atsc_table[] = {
 	{ DTV_FREQUENCY, NULL, 0 },
-	{ DTV_MODULATION, PTABLE(channel_parse_modulation) },
+	{ DTV_MODULATION, PTABLE(fsf_parse_modulation) },
 };
 
 static const struct dvb_parse_table sys_dvbc_table[] = {
 	{ DTV_FREQUENCY, NULL, 0 },
 	{ DTV_SYMBOL_RATE, NULL, 0 },
-	{ DTV_INNER_FEC, PTABLE(channel_parse_code_rate) },
-	{ DTV_MODULATION, PTABLE(channel_parse_modulation) },
+	{ DTV_INNER_FEC, PTABLE(fsf_parse_code_rate) },
+	{ DTV_MODULATION, PTABLE(fsf_parse_modulation) },
 };
 
 /* Note: On DVB-S, frequency is divided by 1000 */
 static const struct dvb_parse_table sys_dvbs_table[] = {
 	{ DTV_FREQUENCY, NULL, 0 },
-	{ DTV_POLARIZATION, PTABLE(channel_parse_polarization) },
+	{ DTV_POLARIZATION, PTABLE(fsf_parse_polarization) },
 	{ DTV_SYMBOL_RATE, NULL, 0 },
-	{ DTV_INNER_FEC, PTABLE(channel_parse_code_rate) },
+	{ DTV_INNER_FEC, PTABLE(fsf_parse_code_rate) },
 };
 
 static const struct dvb_parse_table sys_dvbs2_table[] = {
 	{ DTV_FREQUENCY, NULL, 0 },
-	{ DTV_POLARIZATION, PTABLE(channel_parse_polarization) },
+	{ DTV_POLARIZATION, PTABLE(fsf_parse_polarization) },
 	{ DTV_SYMBOL_RATE, NULL, 0 },
-	{ DTV_INNER_FEC, PTABLE(channel_parse_code_rate) },
-	{ DTV_ROLLOFF, PTABLE(channel_parse_rolloff) },
-	{ DTV_MODULATION, PTABLE(channel_parse_modulation) },
+	{ DTV_INNER_FEC, PTABLE(fsf_parse_code_rate) },
+	{ DTV_ROLLOFF, PTABLE(fsf_parse_rolloff) },
+	{ DTV_MODULATION, PTABLE(fsf_parse_modulation) },
 	{ DTV_STREAM_ID, NULL, 0, 0, 1, 0 },
 	{ DTV_PLS_CODE, NULL, 0, 0, 1, -1 },
 	{ DTV_PLS_MODE, NULL, 0, 0, 1, -1 },
