@@ -1412,6 +1412,8 @@ enum dvb_file_formats dvb_parse_format(const char *name)
 		return FILE_DVBV5;
 	if (!strcasecmp(name, "VDR"))
 		return FILE_VDR;
+	if (!strcasecmp(name, "FSF"))
+		return FILE_FSF;
 
 	fprintf(stderr, _("File format %s is unknown\n"), name);
 	return FILE_UNKNOWN;
@@ -1492,7 +1494,7 @@ struct dvb_file *dvb_read_file_format(const char *fname,
 						    SYS_UNDEFINED,
 						    &channel_file_format);
 		break;
-	case FILE_ZAP:
+	case FILE_:
 		dvb_file = dvb_parse_format_oneline(fname,
 						    delsys,
 						    &channel_file_zap_format);
