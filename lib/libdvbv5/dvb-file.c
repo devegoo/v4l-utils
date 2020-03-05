@@ -1502,6 +1502,11 @@ struct dvb_file *dvb_read_file_format(const char *fname,
 	case FILE_DVBV5:
 		dvb_file = dvb_read_file(fname);
 		break;
+	case FILE_FSF:
+		dvb_file = dvb_parse_format_oneline(fname,
+						    delsys,
+						    &channel_file_fsf_format);
+		break;
 	case FILE_VDR:
 		/* FIXME: add support for VDR input */
 		fprintf(stderr, _("Currently, VDR format is supported only for output\n"));
